@@ -31,7 +31,7 @@ class FileStorageTest extends TestCase
 
     public function test_delete()
     {
-        $file = UploadedFile::fake()->create('video.mp', 1, 'video/mp4');
+        $file = UploadedFile::fake()->create('video.mp4', 1, 'video/mp4');
 
         $path = $file->store('videos');
 
