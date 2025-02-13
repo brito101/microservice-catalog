@@ -11,7 +11,7 @@ abstract class Entity
 
     public function __construct()
     {
-        $this->notification = new Notification();
+        $this->notification = new Notification;
     }
 
     public function __get($property)

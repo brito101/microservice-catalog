@@ -19,15 +19,15 @@ class CastMemberEloquentRepositoryTest extends TestCase
     {
         parent::setUp();
 
-        $this->repository = new CastMemberEloquentRepository(new Model());
+        $this->repository = new CastMemberEloquentRepository(new Model);
     }
 
-    public function testChechImplementsInterfaceRepository()
+    public function test_chech_implements_interface_repository()
     {
         $this->assertInstanceOf(CastMemberRepositoryInterface::class, $this->repository);
     }
 
-    public function testInsert()
+    public function test_insert()
     {
         $entity = new Entity(
             name: 'teste',
@@ -42,14 +42,14 @@ class CastMemberEloquentRepositoryTest extends TestCase
         $this->assertEquals($entity->name, $response->name);
     }
 
-    public function testFindByIdNotFound()
+    public function test_find_by_id_not_found()
     {
         $this->expectException(NotFoundException::class);
 
         $this->repository->findById('fake_id');
     }
 
-    public function testFindById()
+    public function test_find_by_id()
     {
         $castMember = Model::factory()->create();
 
@@ -59,13 +59,13 @@ class CastMemberEloquentRepositoryTest extends TestCase
         $this->assertEquals($castMember->name, $response->name);
     }
 
-    public function testFindAllEmtpy()
+    public function test_find_all_emtpy()
     {
         $response = $this->repository->findAll();
         $this->assertCount(0, $response);
     }
 
-    public function testFindAll()
+    public function test_find_all()
     {
         $castMembers = Model::factory()->count(50)->create();
 
@@ -74,7 +74,7 @@ class CastMemberEloquentRepositoryTest extends TestCase
         $this->assertCount(count($castMembers), $response);
     }
 
-    public function testPagination()
+    public function test_pagination()
     {
         Model::factory()->count(20)->create();
 
@@ -84,7 +84,7 @@ class CastMemberEloquentRepositoryTest extends TestCase
         $this->assertEquals(20, $response->total());
     }
 
-    public function testPaginationWithTotalPage()
+    public function test_pagination_with_total_page()
     {
         Model::factory()->count(80)->create();
 
@@ -96,7 +96,7 @@ class CastMemberEloquentRepositoryTest extends TestCase
         $this->assertEquals(80, $response->total());
     }
 
-    public function testUpdateNotFound()
+    public function test_update_not_found()
     {
         $this->expectException(NotFoundException::class);
 
@@ -108,7 +108,7 @@ class CastMemberEloquentRepositoryTest extends TestCase
         $this->repository->update($entity);
     }
 
-    public function testUpdate()
+    public function test_update()
     {
         $castMember = Model::factory()->create();
 
@@ -124,14 +124,14 @@ class CastMemberEloquentRepositoryTest extends TestCase
         $this->assertEquals('new name', $response->name);
     }
 
-    public function testDeleteNotFound()
+    public function test_delete_not_found()
     {
         $this->expectException(NotFoundException::class);
 
         $this->repository->delete('fake_id');
     }
 
-    public function testDelete()
+    public function test_delete()
     {
         $castMember = Model::factory()->create();
 

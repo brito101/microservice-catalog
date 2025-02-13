@@ -37,7 +37,7 @@ class Video extends Entity
         parent::__construct();
 
         $this->id = $this->id ?? Uuid::random();
-        $this->createdAt = $this->createdAt ?? new DateTime();
+        $this->createdAt = $this->createdAt ?? new DateTime;
 
         $this->validation();
     }

@@ -183,12 +183,12 @@ abstract class BaseVideoUseCaseUnitTest extends TestCase
         $mockRepository = Mockery::mock(stdClass::class, VideoRepositoryInterface::class);
 
         $mockRepository->shouldReceive($this->nameActionRepository())
-                                ->times($timesCallAction)
-                                ->andReturn($entity);
+            ->times($timesCallAction)
+            ->andReturn($entity);
         $mockRepository->shouldReceive('findById')
-                            ->andReturn($entity);
+            ->andReturn($entity);
         $mockRepository->shouldReceive('updateMedia')
-                        ->times($timesCallUpdateMedia);
+            ->times($timesCallUpdateMedia);
 
         return $mockRepository;
     }
@@ -237,8 +237,8 @@ abstract class BaseVideoUseCaseUnitTest extends TestCase
         $mockFileStorage = Mockery::mock(stdClass::class, FileStorageInterface::class);
 
         $mockFileStorage->shouldReceive('store')
-                        ->times($timesCall)
-                        ->andReturn('path/file.png');
+            ->times($timesCall)
+            ->andReturn('path/file.png');
 
         return $mockFileStorage;
     }

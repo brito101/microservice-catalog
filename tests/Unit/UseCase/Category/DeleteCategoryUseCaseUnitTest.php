@@ -13,7 +13,7 @@ use stdClass;
 
 class DeleteCategoryUseCaseUnitTest extends TestCase
 {
-    public function testDelete()
+    public function test_delete()
     {
         $uuid = (string) Uuid::uuid4()->toString();
 
@@ -38,7 +38,7 @@ class DeleteCategoryUseCaseUnitTest extends TestCase
         $this->spy->shouldHaveReceived('delete');
     }
 
-    public function testDeleteFalse()
+    public function test_delete_false()
     {
         $uuid = (string) Uuid::uuid4()->toString();
 

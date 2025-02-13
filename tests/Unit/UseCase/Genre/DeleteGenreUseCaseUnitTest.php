@@ -22,9 +22,9 @@ class DeleteGenreUseCaseUnitTest extends TestCase
 
         // Expect
         $mockRepository->shouldReceive('delete')
-                        ->once()
-                        ->with($uuid)
-                        ->andReturn(true);
+            ->once()
+            ->with($uuid)
+            ->andReturn(true);
 
         $mockInputDto = Mockery::mock(GenreInputDto::class, [$uuid]);
 
@@ -44,9 +44,9 @@ class DeleteGenreUseCaseUnitTest extends TestCase
 
         $mockRepository = Mockery::mock(stdClass::class, GenreRepositoryInterface::class);
         $mockRepository->shouldReceive('delete')
-                        ->times(1)
-                        ->with($uuid)
-                        ->andReturn(false);
+            ->times(1)
+            ->with($uuid)
+            ->andReturn(false);
 
         $mockInputDto = Mockery::mock(GenreInputDto::class, [$uuid]);
 

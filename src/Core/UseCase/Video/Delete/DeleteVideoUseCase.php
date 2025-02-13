@@ -10,8 +10,7 @@ class DeleteVideoUseCase
 {
     public function __construct(
         private VideoRepositoryInterface $repository,
-    ) {
-    }
+    ) {}
 
     public function exec(DeleteInputVideoDTO $input): DeleteOutputVideoDTO
     {

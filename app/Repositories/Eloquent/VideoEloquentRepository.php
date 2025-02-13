@@ -21,8 +21,7 @@ class VideoEloquentRepository implements VideoRepositoryInterface
 
     public function __construct(
         protected Model $model,
-    ) {
-    }
+    ) {}
 
     public function insert(Entity $entity): Entity
     {
@@ -53,13 +52,13 @@ class VideoEloquentRepository implements VideoRepositoryInterface
     public function findAll(string $filter = '', $order = 'DESC'): array
     {
         $result = $this->model
-                        ->where(function ($query) use ($filter) {
-                            if ($filter) {
-                                $query->where('title', 'LIKE', "%{$filter}%");
-                            }
-                        })
-                        ->orderBy('title', $order)
-                        ->get();
+            ->where(function ($query) use ($filter) {
+                if ($filter) {
+                    $query->where('title', 'LIKE', "%{$filter}%");
+                }
+            })
+            ->orderBy('title', $order)
+            ->get();
 
         return $result->toArray();
     }
@@ -67,23 +66,23 @@ class VideoEloquentRepository implements VideoRepositoryInterface
     public function paginate(string $filter = '', $order = 'DESC', int $page = 1, int $totalPage = 15): PaginationInterface
     {
         $result = $this->model
-                        ->where(function ($query) use ($filter) {
-                            if ($filter) {
-                                $query->where('title', 'LIKE', "%{$filter}%");
-                            }
-                        })
-                        ->with([
-                            'media',
-                            'trailer',
-                            'banner',
-                            'thumb',
-                            'thumbHalf',
-                            'categories',
-                            'castMembers',
-                            'genres',
-                        ])
-                        ->orderBy('title', $order)
-                        ->paginate($totalPage, ['*'], 'page', $page);
+            ->where(function ($query) use ($filter) {
+                if ($filter) {
+                    $query->where('title', 'LIKE', "%{$filter}%");
+                }
+            })
+            ->with([
+                'media',
+                'trailer',
+                'banner',
+                'thumb',
+                'thumbHalf',
+                'categories',
+                'castMembers',
+                'genres',
+            ])
+            ->orderBy('title', $order)
+            ->paginate($totalPage, ['*'], 'page', $page);
 
         return new PaginationPresenter($result);
     }
@@ -166,8 +165,8 @@ class VideoEloquentRepository implements VideoRepositoryInterface
             $entity->addCastMember($castMember->id);
         }
 
-        $builder = (new UpdateVideoBuilder())
-                        ->setEntity($entity);
+        $builder = (new UpdateVideoBuilder)
+            ->setEntity($entity);
 
         if ($trailer = $model->trailer) {
             $builder->addTrailer($trailer->file_path);

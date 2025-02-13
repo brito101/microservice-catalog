@@ -10,10 +10,10 @@ use Tests\TestCase;
 
 class ListGenreUseCaseTest extends TestCase
 {
-    public function testFindById()
+    public function test_find_by_id()
     {
         $useCase = new ListGenreUseCase(
-            new GenreEloquentRepository(new Model())
+            new GenreEloquentRepository(new Model)
         );
 
         $genre = Model::factory()->create();

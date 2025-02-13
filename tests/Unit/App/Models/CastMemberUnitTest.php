@@ -11,7 +11,7 @@ class CastMemberUnitTest extends ModelTestCase
 {
     protected function model(): Model
     {
-        return new CastMember();
+        return new CastMember;
     }
 
     protected function traits(): array

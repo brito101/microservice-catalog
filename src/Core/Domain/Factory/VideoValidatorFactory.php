@@ -11,6 +11,6 @@ class VideoValidatorFactory
     public static function create(): ValidatorInterface
     {
         // return new VideoLaravelValidator();
-        return new VideoRakitValidator();
+        return new VideoRakitValidator;
     }
 }

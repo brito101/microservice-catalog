@@ -47,11 +47,11 @@ class StoreVideoRequest extends FormRequest
                 'exists:genres,id,deleted_at,NULL',
             ],
             'cast_members' => 'required|array|exists:cast_members,id,deleted_at,NULL',
-            'thumb_file' => 'nullable|image', //5MB
-            'thumb_half_file' => 'nullable|image', //5MB
-            'banner_file' => 'nullable|image', //10MB
-            'trailer_file' => 'nullable|mimetypes:video/mp4', //1GB
-            'video_file' => 'nullable|mimetypes:video/mp4', //50GB
+            'thumb_file' => 'nullable|image', // 5MB
+            'thumb_half_file' => 'nullable|image', // 5MB
+            'banner_file' => 'nullable|image', // 10MB
+            'trailer_file' => 'nullable|mimetypes:video/mp4', // 1GB
+            'video_file' => 'nullable|mimetypes:video/mp4', // 50GB
         ];
     }
 }

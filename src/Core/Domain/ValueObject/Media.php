@@ -10,8 +10,7 @@ class Media
         protected string $filePath,
         protected MediaStatus $mediaStatus,
         protected string $encodedPath = '',
-    ) {
-    }
+    ) {}
 
     public function __get($property)
     {

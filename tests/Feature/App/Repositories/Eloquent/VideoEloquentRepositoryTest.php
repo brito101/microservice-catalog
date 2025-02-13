@@ -28,11 +28,11 @@ class VideoEloquentRepositoryTest extends TestCase
         parent::setUp();
 
         $this->repository = new VideoEloquentRepository(
-            new Model()
+            new Model
         );
     }
 
-    public function testImplementsInterface()
+    public function test_implements_interface()
     {
         $this->assertInstanceOf(
             VideoRepositoryInterface::class,
@@ -40,7 +40,7 @@ class VideoEloquentRepositoryTest extends TestCase
         );
     }
 
-    public function testInsert()
+    public function test_insert()
     {
         $entity = new EntityVideo(
             title: 'Test',
@@ -58,7 +58,7 @@ class VideoEloquentRepositoryTest extends TestCase
         ]);
     }
 
-    public function testInsertWithRelationships()
+    public function test_insert_with_relationships()
     {
         $categories = Category::factory()->count(4)->create();
         $genres = Genre::factory()->count(4)->create();
@@ -97,14 +97,14 @@ class VideoEloquentRepositoryTest extends TestCase
         $this->assertEquals($castMembers->pluck('id')->toArray(), $entityInDb->castMemberIds);
     }
 
-    public function testNotFoundVideo()
+    public function test_not_found_video()
     {
         $this->expectException(NotFoundException::class);
 
         $this->repository->findById('fake_value');
     }
 
-    public function testFinById()
+    public function test_fin_by_id()
     {
         $video = Model::factory()->create();
 
@@ -114,7 +114,7 @@ class VideoEloquentRepositoryTest extends TestCase
         $this->assertEquals($video->title, $response->title);
     }
 
-    public function testFindAll()
+    public function test_find_all()
     {
         Model::factory()->count(10)->create();
 
@@ -123,7 +123,7 @@ class VideoEloquentRepositoryTest extends TestCase
         $this->assertCount(10, $response);
     }
 
-    public function testFindAllWithFilter()
+    public function test_find_all_with_filter()
     {
         Model::factory()->count(10)->create();
         Model::factory()->count(10)->create([
@@ -141,7 +141,7 @@ class VideoEloquentRepositoryTest extends TestCase
     /**
      * @dataProvider dataProviderPagination
      */
-    public function testPagination(
+    public function test_pagination(
         int $page,
         int $totalPage,
         int $total = 50,
@@ -176,7 +176,7 @@ class VideoEloquentRepositoryTest extends TestCase
         ];
     }
 
-    public function testUpdateNotFoundId()
+    public function test_update_not_found_id()
     {
         $this->expectException(NotFoundException::class);
 
@@ -192,7 +192,7 @@ class VideoEloquentRepositoryTest extends TestCase
         $this->repository->update($entity);
     }
 
-    public function testUpdate()
+    public function test_update()
     {
         $categories = Category::factory()->count(10)->create();
         $genres = Genre::factory()->count(10)->create();
@@ -240,14 +240,14 @@ class VideoEloquentRepositoryTest extends TestCase
         $this->assertEquals($castMembers->pluck('id')->toArray(), $entityInDb->castMemberIds);
     }
 
-    public function testDeleteNotFound()
+    public function test_delete_not_found()
     {
         $this->expectException(NotFoundException::class);
 
         $this->repository->delete('fake_value');
     }
 
-    public function testDelete()
+    public function test_delete()
     {
         $video = Model::factory()->create();
 
@@ -262,7 +262,7 @@ class VideoEloquentRepositoryTest extends TestCase
         ]);
     }
 
-    public function testInsertWithMediaTrailer()
+    public function test_insert_with_media_trailer()
     {
         $entity = new EntityVideo(
             title: 'Test',
@@ -304,7 +304,7 @@ class VideoEloquentRepositoryTest extends TestCase
         $this->assertNotNull($entityDb->trailerFile());
     }
 
-    public function testInsertWithMediaVideo()
+    public function test_insert_with_media_video()
     {
         $entity = new EntityVideo(
             title: 'Test',
@@ -346,7 +346,7 @@ class VideoEloquentRepositoryTest extends TestCase
         $this->assertNotNull($entityDb->videoFile());
     }
 
-    public function testInsertWithImageBanner()
+    public function test_insert_with_image_banner()
     {
         $entity = new EntityVideo(
             title: 'Test',
@@ -383,7 +383,7 @@ class VideoEloquentRepositoryTest extends TestCase
         $this->assertNotNull($entityDb->bannerFile());
     }
 
-    public function testInsertWithImageThumb()
+    public function test_insert_with_image_thumb()
     {
         $entity = new EntityVideo(
             title: 'Test',
@@ -420,7 +420,7 @@ class VideoEloquentRepositoryTest extends TestCase
         $this->assertNotNull($entityDb->thumbFile());
     }
 
-    public function testInsertWithImageThumbHalf()
+    public function test_insert_with_image_thumb_half()
     {
         $entity = new EntityVideo(
             title: 'Test',

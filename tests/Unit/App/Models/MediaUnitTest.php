@@ -11,7 +11,7 @@ class MediaUnitTest extends ModelTestCase
 {
     protected function model(): Model
     {
-        return new Media();
+        return new Media;
     }
 
     protected function traits(): array

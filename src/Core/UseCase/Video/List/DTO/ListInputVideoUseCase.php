@@ -6,6 +6,5 @@ class ListInputVideoUseCase
 {
     public function __construct(
         public string $id
-    ) {
-    }
+    ) {}
 }

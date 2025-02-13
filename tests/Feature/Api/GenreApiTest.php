@@ -14,7 +14,7 @@ class GenreApiTest extends TestCase
 
     protected $endpoint = '/api/genres';
 
-    public function testIndexEmpty()
+    public function test_index_empty()
     {
         $response = $this->getJson($this->endpoint);
 
@@ -22,7 +22,7 @@ class GenreApiTest extends TestCase
         $response->assertJsonCount(0, 'data');
     }
 
-    public function testIndex()
+    public function test_index()
     {
         Model::factory()->count(20)->create();
 
@@ -43,7 +43,7 @@ class GenreApiTest extends TestCase
         ]);
     }
 
-    public function testStore()
+    public function test_store()
     {
         $categories = ModelCategory::factory()->count(10)->create();
 
@@ -63,7 +63,7 @@ class GenreApiTest extends TestCase
         ]);
     }
 
-    public function testValidationsStore()
+    public function test_validations_store()
     {
         $categories = ModelCategory::factory()->count(2)->create();
 
@@ -84,14 +84,14 @@ class GenreApiTest extends TestCase
         ]);
     }
 
-    public function testShowNotFound()
+    public function test_show_not_found()
     {
         $response = $this->getJson("{$this->endpoint}/fake_id");
 
         $response->assertStatus(Response::HTTP_NOT_FOUND);
     }
 
-    public function testShow()
+    public function test_show()
     {
         $genre = Model::factory()->create();
 
@@ -107,7 +107,7 @@ class GenreApiTest extends TestCase
         ]);
     }
 
-    public function testUpdateNotFound()
+    public function test_update_not_found()
     {
         $categories = ModelCategory::factory()->count(10)->create();
 
@@ -119,7 +119,7 @@ class GenreApiTest extends TestCase
         $response->assertStatus(Response::HTTP_NOT_FOUND);
     }
 
-    public function testValidationsUpdate()
+    public function test_validations_update()
     {
         $response = $this->putJson("{$this->endpoint}/fake_value", [
             'name' => 'New Name to Update',
@@ -135,7 +135,7 @@ class GenreApiTest extends TestCase
         ]);
     }
 
-    public function testUpdate()
+    public function test_update()
     {
         $genre = Model::factory()->create();
         $categories = ModelCategory::factory()->count(10)->create();
@@ -155,14 +155,14 @@ class GenreApiTest extends TestCase
         ]);
     }
 
-    public function testDeleteNotFound()
+    public function test_delete_not_found()
     {
         $response = $this->deleteJson("{$this->endpoint}/fake_id");
 
         $response->assertStatus(Response::HTTP_NOT_FOUND);
     }
 
-    public function testDelete()
+    public function test_delete()
     {
         $genre = Model::factory()->create();
 

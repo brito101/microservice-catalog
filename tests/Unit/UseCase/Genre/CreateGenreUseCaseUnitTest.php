@@ -52,8 +52,8 @@ class CreateGenreUseCaseUnitTest extends TestCase
     {
         $mockRepository = Mockery::mock(stdClass::class, GenreRepositoryInterface::class);
         $mockRepository->shouldReceive('insert')
-                        ->times($timesCalled)
-                        ->andReturn($this->mockEntity($uuid));
+            ->times($timesCalled)
+            ->andReturn($this->mockEntity($uuid));
 
         return $mockRepository;
     }

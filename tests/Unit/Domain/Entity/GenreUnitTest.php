@@ -11,7 +11,7 @@ use Ramsey\Uuid\Uuid as RamseyUuid;
 
 class GenreUnitTest extends TestCase
 {
-    public function testAttributes()
+    public function test_attributes()
     {
         $uuid = (string) RamseyUuid::uuid4();
         $date = date('Y-m-d H:i:s');
@@ -29,7 +29,7 @@ class GenreUnitTest extends TestCase
         $this->assertEquals($date, $genre->createdAt());
     }
 
-    public function testAttributesCreate()
+    public function test_attributes_create()
     {
         $genre = new Genre(
             name: 'New Genre',
@@ -41,7 +41,7 @@ class GenreUnitTest extends TestCase
         $this->assertNotEmpty($genre->createdAt());
     }
 
-    public function testDeactivate()
+    public function test_deactivate()
     {
         $genre = new Genre(
             name: 'teste'
@@ -54,7 +54,7 @@ class GenreUnitTest extends TestCase
         $this->assertFalse($genre->isActive);
     }
 
-    public function testActivate()
+    public function test_activate()
     {
         $genre = new Genre(
             name: 'teste',
@@ -68,7 +68,7 @@ class GenreUnitTest extends TestCase
         $this->assertTrue($genre->isActive);
     }
 
-    public function testUpdate()
+    public function test_update()
     {
         $genre = new Genre(
             name: 'teste'
@@ -83,7 +83,7 @@ class GenreUnitTest extends TestCase
         $this->assertEquals('Name Updated', $genre->name);
     }
 
-    public function testEntityException()
+    public function test_entity_exception()
     {
         $this->expectException(EntityValidationException::class);
 
@@ -92,7 +92,7 @@ class GenreUnitTest extends TestCase
         );
     }
 
-    public function testEntityUpdateException()
+    public function test_entity_update_exception()
     {
         $this->expectException(EntityValidationException::class);
 
@@ -111,7 +111,7 @@ class GenreUnitTest extends TestCase
         );
     }
 
-    public function testAddCategoryToGenrre()
+    public function test_add_category_to_genrre()
     {
         $categoryId = (string) RamseyUuid::uuid4();
 
@@ -131,7 +131,7 @@ class GenreUnitTest extends TestCase
         $this->assertCount(2, $genre->categoriesId);
     }
 
-    public function testRemoveCategoryToGenrre()
+    public function test_remove_category_to_genrre()
     {
         $categoryId = (string) RamseyUuid::uuid4();
         $categoryId2 = (string) RamseyUuid::uuid4();

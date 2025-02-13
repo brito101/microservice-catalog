@@ -11,7 +11,7 @@ class CategoryUnitTest extends ModelTestCase
 {
     protected function model(): Model
     {
-        return new Category();
+        return new Category;
     }
 
     protected function traits(): array

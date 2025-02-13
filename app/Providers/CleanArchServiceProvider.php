@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-use App\Events\{
-    VideoEvent
-};
+use App\Events\VideoEvent;
 use App\Repositories\Eloquent\CastMemberEloquentRepository;
 use App\Repositories\Eloquent\CategoryEloquentRepository;
 use App\Repositories\Eloquent\GenreEloquentRepository;
@@ -12,9 +10,7 @@ use App\Repositories\Eloquent\VideoEloquentRepository;
 use App\Repositories\Transaction\DBTransaction;
 use App\Services\AMQP\AMQPInterface;
 use App\Services\AMQP\PhpAmqpService;
-use App\Services\{
-    Storage\FileStorage
-};
+use App\Services\Storage\FileStorage;
 use Core\Domain\Repository\CastMemberRepositoryInterface;
 use Core\Domain\Repository\CategoryRepositoryInterface;
 use Core\Domain\Repository\GenreRepositoryInterface;

@@ -10,7 +10,7 @@ use Throwable;
 
 class CategoryUnitTest extends TestCase
 {
-    public function testAttributes()
+    public function test_attributes()
     {
         $category = new Category(
             name: 'New Cat',
@@ -25,7 +25,7 @@ class CategoryUnitTest extends TestCase
         $this->assertEquals(true, $category->isActive);
     }
 
-    public function testActivated()
+    public function test_activated()
     {
         $category = new Category(
             name: 'New Cat',
@@ -37,7 +37,7 @@ class CategoryUnitTest extends TestCase
         $this->assertTrue($category->isActive);
     }
 
-    public function testDisabled()
+    public function test_disabled()
     {
         $category = new Category(
             name: 'New Cat',
@@ -48,7 +48,7 @@ class CategoryUnitTest extends TestCase
         $this->assertFalse($category->isActive);
     }
 
-    public function testUpdate()
+    public function test_update()
     {
         $uuid = (string) Uuid::uuid4()->toString();
 
@@ -70,7 +70,7 @@ class CategoryUnitTest extends TestCase
         $this->assertEquals('new_desc', $category->description);
     }
 
-    public function testExceptionName()
+    public function test_exception_name()
     {
         try {
             new Category(
@@ -84,7 +84,7 @@ class CategoryUnitTest extends TestCase
         }
     }
 
-    public function testExceptionDescription()
+    public function test_exception_description()
     {
         try {
             new Category(

@@ -11,7 +11,7 @@ class GenreUnitTest extends ModelTestCase
 {
     protected function model(): Model
     {
-        return new Genre();
+        return new Genre;
     }
 
     protected function traits(): array

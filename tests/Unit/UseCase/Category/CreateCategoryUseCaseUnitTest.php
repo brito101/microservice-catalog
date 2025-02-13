@@ -14,7 +14,7 @@ use stdClass;
 
 class CreateCategoryUseCaseUnitTest extends TestCase
 {
-    public function testCreateNewCategory()
+    public function test_create_new_category()
     {
         $uuid = (string) Uuid::uuid4()->toString();
         $categoryName = 'name cat';

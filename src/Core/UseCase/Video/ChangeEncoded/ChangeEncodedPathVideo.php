@@ -12,8 +12,7 @@ class ChangeEncodedPathVideo
 {
     public function __construct(
         protected VideoRepositoryInterface $repository
-    ) {
-    }
+    ) {}
 
     public function exec(ChangeEncodedVideoDTO $input): ChangeEncodedVideoOutputDTO
     {

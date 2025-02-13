@@ -32,17 +32,17 @@ class CategoryController extends Controller
         );
 
         return CategoryResource::collection(collect($response->items))
-                                    ->additional([
-                                        'meta' => [
-                                            'total' => $response->total,
-                                            'current_page' => $response->current_page,
-                                            'last_page' => $response->last_page,
-                                            'first_page' => $response->first_page,
-                                            'per_page' => $response->per_page,
-                                            'to' => $response->to,
-                                            'from' => $response->from,
-                                        ],
-                                    ]);
+            ->additional([
+                'meta' => [
+                    'total' => $response->total,
+                    'current_page' => $response->current_page,
+                    'last_page' => $response->last_page,
+                    'first_page' => $response->first_page,
+                    'per_page' => $response->per_page,
+                    'to' => $response->to,
+                    'from' => $response->from,
+                ],
+            ]);
     }
 
     public function store(StoreCategoryRequest $request, CreateCategoryUseCase $useCase)
@@ -56,8 +56,8 @@ class CategoryController extends Controller
         );
 
         return (new CategoryResource($response))
-                    ->response()
-                    ->setStatusCode(Response::HTTP_CREATED);
+            ->response()
+            ->setStatusCode(Response::HTTP_CREATED);
     }
 
     public function show(ListCategoryUseCase $useCase, $id)
@@ -77,7 +77,7 @@ class CategoryController extends Controller
         );
 
         return (new CategoryResource($response))
-                    ->response();
+            ->response();
     }
 
     public function destroy(DeleteCategoryUseCase $useCase, $id)

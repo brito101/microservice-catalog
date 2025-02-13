@@ -48,21 +48,21 @@ class GenreEloquentRepository implements GenreRepositoryInterface
     public function getIdsListIds(array $genresId = []): array
     {
         return $this->model
-                    ->whereIn('id', $genresId)
-                    ->pluck('id')
-                    ->toArray();
+            ->whereIn('id', $genresId)
+            ->pluck('id')
+            ->toArray();
     }
 
     public function findAll(string $filter = '', $order = 'DESC'): array
     {
         $result = $this->model
-                        ->where(function ($query) use ($filter) {
-                            if ($filter) {
-                                $query->where('name', 'LIKE', "%{$filter}%");
-                            }
-                        })
-                        ->orderBy('name', $order)
-                        ->get();
+            ->where(function ($query) use ($filter) {
+                if ($filter) {
+                    $query->where('name', 'LIKE', "%{$filter}%");
+                }
+            })
+            ->orderBy('name', $order)
+            ->get();
 
         return $result->toArray();
     }
@@ -70,13 +70,13 @@ class GenreEloquentRepository implements GenreRepositoryInterface
     public function paginate(string $filter = '', $order = 'DESC', int $page = 1, int $totalPage = 15): PaginationInterface
     {
         $result = $this->model
-                        ->where(function ($query) use ($filter) {
-                            if ($filter) {
-                                $query->where('name', 'LIKE', "%{$filter}%");
-                            }
-                        })
-                        ->orderBy('name', $order)
-                        ->paginate($totalPage);
+            ->where(function ($query) use ($filter) {
+                if ($filter) {
+                    $query->where('name', 'LIKE', "%{$filter}%");
+                }
+            })
+            ->orderBy('name', $order)
+            ->paginate($totalPage);
 
         return new PaginationPresenter($result);
     }

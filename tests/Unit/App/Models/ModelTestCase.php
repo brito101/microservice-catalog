@@ -15,7 +15,7 @@ abstract class ModelTestCase extends TestCase
 
     abstract protected function casts(): array;
 
-    public function testIfUseTraits()
+    public function test_if_use_traits()
     {
         $traitsNeed = $this->traits();
 
@@ -24,7 +24,7 @@ abstract class ModelTestCase extends TestCase
         $this->assertEquals($traitsNeed, $traitsUsed);
     }
 
-    public function testFillables()
+    public function test_fillables()
     {
         $expected = $this->fillables();
 
@@ -33,14 +33,14 @@ abstract class ModelTestCase extends TestCase
         $this->assertEquals($expected, $fillable);
     }
 
-    public function testIncrementingIsFalse()
+    public function test_incrementing_is_false()
     {
         $model = $this->model();
 
         $this->assertFalse($model->incrementing);
     }
 
-    public function testHasCasts()
+    public function test_has_casts()
     {
         $excepectedCasts = $this->casts();
 

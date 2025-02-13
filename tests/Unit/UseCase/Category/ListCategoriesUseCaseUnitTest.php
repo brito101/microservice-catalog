@@ -13,7 +13,7 @@ use stdClass;
 
 class ListCategoriesUseCaseUnitTest extends TestCase
 {
-    public function testListCategoriesEmpty()
+    public function test_list_categories_empty()
     {
         $mockPagination = $this->mockPagination();
 
@@ -38,9 +38,9 @@ class ListCategoriesUseCaseUnitTest extends TestCase
         $this->spy->shouldHaveReceived('paginate');
     }
 
-    public function testListCategories()
+    public function test_list_categories()
     {
-        $register = new stdClass();
+        $register = new stdClass;
         $register->id = 'id';
         $register->name = 'name';
         $register->description = 'description';

@@ -31,9 +31,9 @@ class ListCastMermberUseCaseUnitTest extends TestCase
 
         $mockRepository = Mockery::mock(stdClass::class, CastMemberRepositoryInterface::class);
         $mockRepository->shouldReceive('findById')
-                            ->times(1)
-                            ->with($uuid)
-                            ->andReturn($mockEntity);
+            ->times(1)
+            ->with($uuid)
+            ->andReturn($mockEntity);
 
         $mockInputDTO = Mockery::mock(CastMemberInputDto::class, [$uuid]);
 

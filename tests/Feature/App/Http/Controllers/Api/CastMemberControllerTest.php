@@ -28,9 +28,9 @@ class CastMemberControllerTest extends TestCase
     protected function setUp(): void
     {
         $this->repository = new CastMemberEloquentRepository(
-            new CastMember()
+            new CastMember
         );
-        $this->controller = new CastMemberController();
+        $this->controller = new CastMemberController;
 
         parent::setUp();
     }
@@ -39,7 +39,7 @@ class CastMemberControllerTest extends TestCase
     {
         $useCase = new ListCastMembersUseCase($this->repository);
 
-        $response = $this->controller->index(new Request(), $useCase);
+        $response = $this->controller->index(new Request, $useCase);
 
         $this->assertInstanceOf(AnonymousResourceCollection::class, $response);
         $this->assertArrayHasKey('meta', $response->additional);
@@ -49,7 +49,7 @@ class CastMemberControllerTest extends TestCase
     {
         $useCase = new CreateCastMemberUseCase($this->repository);
 
-        $request = new StoreCastMemberRequest();
+        $request = new StoreCastMemberRequest;
         $request->headers->set('content-type', 'application/json');
         $request->setJson(new ParameterBag([
             'name' => 'Teste',
@@ -79,7 +79,7 @@ class CastMemberControllerTest extends TestCase
     {
         $castMember = CastMember::factory()->create();
 
-        $request = new UpdateCastMemberRequest();
+        $request = new UpdateCastMemberRequest;
         $request->headers->set('content-type', 'application/json');
         $request->setJson(new ParameterBag([
             'name' => 'Updated',

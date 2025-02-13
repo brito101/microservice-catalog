@@ -6,6 +6,5 @@ class CastMemberInputDto
 {
     public function __construct(
         public string $id,
-    ) {
-    }
+    ) {}
 }

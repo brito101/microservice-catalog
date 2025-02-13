@@ -11,7 +11,7 @@ class VideoRakitValidator implements ValidatorInterface
     {
         $data = $this->convertEntityForArray($entity);
 
-        $validation = (new Validator())->validate($data, [
+        $validation = (new Validator)->validate($data, [
             'title' => 'required|min:3|max:255',
             'description' => 'required|min:3|max:255',
             'yearLaunched' => 'required|integer',

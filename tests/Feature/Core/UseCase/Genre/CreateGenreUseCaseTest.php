@@ -16,12 +16,12 @@ class CreateGenreUseCaseTest extends TestCase
 {
     public function test_insert()
     {
-        $repository = new GenreEloquentRepository(new Model());
-        $repositoryCategory = new CategoryEloquentRepository(new ModelCategory());
+        $repository = new GenreEloquentRepository(new Model);
+        $repositoryCategory = new CategoryEloquentRepository(new ModelCategory);
 
         $useCase = new CreateGenreUseCase(
             $repository,
-            new DBTransaction(),
+            new DBTransaction,
             $repositoryCategory
         );
 
@@ -42,16 +42,16 @@ class CreateGenreUseCaseTest extends TestCase
         $this->assertDatabaseCount('category_genre', 10);
     }
 
-    public function testExceptionInsertGenreWitiCategoriesIdsInvalid()
+    public function test_exception_insert_genre_witi_categories_ids_invalid()
     {
         $this->expectException(NotFoundException::class);
 
-        $repository = new GenreEloquentRepository(new Model());
-        $repositoryCategory = new CategoryEloquentRepository(new ModelCategory());
+        $repository = new GenreEloquentRepository(new Model);
+        $repositoryCategory = new CategoryEloquentRepository(new ModelCategory);
 
         $useCase = new CreateGenreUseCase(
             $repository,
-            new DBTransaction(),
+            new DBTransaction,
             $repositoryCategory
         );
 
@@ -67,14 +67,14 @@ class CreateGenreUseCaseTest extends TestCase
         );
     }
 
-    public function testTransactionInsert()
+    public function test_transaction_insert()
     {
-        $repository = new GenreEloquentRepository(new Model());
-        $repositoryCategory = new CategoryEloquentRepository(new ModelCategory());
+        $repository = new GenreEloquentRepository(new Model);
+        $repositoryCategory = new CategoryEloquentRepository(new ModelCategory);
 
         $useCase = new CreateGenreUseCase(
             $repository,
-            new DBTransaction(),
+            new DBTransaction,
             $repositoryCategory
         );
 
@@ -95,7 +95,7 @@ class CreateGenreUseCaseTest extends TestCase
 
             $this->assertDatabaseCount('category_genre', 10);
         } catch (\Throwable $th) {
-            //throw $th;
+            // throw $th;
             $this->assertDatabaseCount('genres', 0);
             $this->assertDatabaseCount('category_genre', 0);
         }

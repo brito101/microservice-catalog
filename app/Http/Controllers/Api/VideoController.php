@@ -34,7 +34,7 @@ class VideoController extends Controller
         );
 
         return (new ApiAdapter($response))
-                    ->toJson();
+            ->toJson();
     }
 
     public function show(ListVideoUseCase $useCase, $id)

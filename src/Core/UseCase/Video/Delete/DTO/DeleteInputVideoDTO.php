@@ -6,6 +6,5 @@ class DeleteInputVideoDTO
 {
     public function __construct(
         public string $id
-    ) {
-    }
+    ) {}
 }

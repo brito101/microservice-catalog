@@ -14,7 +14,7 @@ class DeleteCategoryUseCaseTest extends TestCase
     {
         $categoryDb = Model::factory()->create();
 
-        $repository = new CategoryEloquentRepository(new Model());
+        $repository = new CategoryEloquentRepository(new Model);
         $useCase = new DeleteCategoryUseCase($repository);
         $useCase->execute(
             new CategoryInputDto(

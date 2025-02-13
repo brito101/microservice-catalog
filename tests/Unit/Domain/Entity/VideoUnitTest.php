@@ -15,7 +15,7 @@ use Ramsey\Uuid\Uuid as RamseyUuid;
 
 class VideoUnitTest extends TestCase
 {
-    public function testAttributes()
+    public function test_attributes()
     {
         $uuid = (string) RamseyUuid::uuid4();
 
@@ -40,7 +40,7 @@ class VideoUnitTest extends TestCase
         $this->assertEquals(true, $entity->published);
     }
 
-    public function testIdAndCreatedAt()
+    public function test_id_and_created_at()
     {
         $entity = new Video(
             title: 'new title',
@@ -55,7 +55,7 @@ class VideoUnitTest extends TestCase
         $this->assertNotEmpty($entity->createdAt());
     }
 
-    public function testAddCategoryId()
+    public function test_add_category_id()
     {
         $categoryId = (string) RamseyUuid::uuid4();
 
@@ -78,7 +78,7 @@ class VideoUnitTest extends TestCase
         $this->assertCount(2, $entity->categoriesId);
     }
 
-    public function testRemoveCategoryId()
+    public function test_remove_category_id()
     {
         $categoryId = (string) RamseyUuid::uuid4();
 
@@ -104,7 +104,7 @@ class VideoUnitTest extends TestCase
         $this->assertCount(1, $entity->categoriesId);
     }
 
-    public function testAddGenre()
+    public function test_add_genre()
     {
         $genreId = (string) RamseyUuid::uuid4();
 
@@ -127,7 +127,7 @@ class VideoUnitTest extends TestCase
         $this->assertCount(2, $entity->genresId);
     }
 
-    public function testRemoveGenre()
+    public function test_remove_genre()
     {
         $genreId = (string) RamseyUuid::uuid4();
 
@@ -153,7 +153,7 @@ class VideoUnitTest extends TestCase
         $this->assertCount(1, $entity->genresId);
     }
 
-    public function testAddCastMember()
+    public function test_add_cast_member()
     {
         $castMemberId = (string) RamseyUuid::uuid4();
 
@@ -176,7 +176,7 @@ class VideoUnitTest extends TestCase
         $this->assertCount(2, $entity->castMemberIds);
     }
 
-    public function testRemoveCastMember()
+    public function test_remove_cast_member()
     {
         $castMemberId = (string) RamseyUuid::uuid4();
 
@@ -202,7 +202,7 @@ class VideoUnitTest extends TestCase
         $this->assertCount(1, $entity->castMemberIds);
     }
 
-    public function testValueObjectImage()
+    public function test_value_object_image()
     {
         $entity = new Video(
             title: 'new title',
@@ -219,7 +219,7 @@ class VideoUnitTest extends TestCase
         $this->assertEquals('teste-path/image.png', $entity->thumbFile()->path());
     }
 
-    public function testValueObjectImageToThumHalf()
+    public function test_value_object_image_to_thum_half()
     {
         $entity = new Video(
             title: 'new title',
@@ -236,7 +236,7 @@ class VideoUnitTest extends TestCase
         $this->assertEquals('teste-path/image.png', $entity->thumbHalf()->path());
     }
 
-    public function testValueObjectImageToBannerFile()
+    public function test_value_object_image_to_banner_file()
     {
         $entity = new Video(
             title: 'new title',
@@ -253,7 +253,7 @@ class VideoUnitTest extends TestCase
         $this->assertEquals('teste-path/banner.png', $entity->bannerFile()->path());
     }
 
-    public function testValueObjectMedia()
+    public function test_value_object_media()
     {
         $trailerFile = new Media(
             filePath: 'path/trailer.mp4',
@@ -276,7 +276,7 @@ class VideoUnitTest extends TestCase
         $this->assertEquals('path/trailer.mp4', $entity->trailerFile()->filePath);
     }
 
-    public function testValueObjectMediaVideo()
+    public function test_value_object_media_video()
     {
         $videoFile = new Media(
             filePath: 'path/video.mp4',
@@ -298,7 +298,7 @@ class VideoUnitTest extends TestCase
         $this->assertEquals('path/video.mp4', $entity->videoFile()->filePath);
     }
 
-    public function testException()
+    public function test_exception()
     {
         $this->expectException(NotificationException::class);
 

@@ -12,7 +12,7 @@ class Notification
     }
 
     /**
-     * @param $error array[context, mensage]
+     * @param  $error  array[context, mensage]
      */
     public function addError(array $error): void
     {

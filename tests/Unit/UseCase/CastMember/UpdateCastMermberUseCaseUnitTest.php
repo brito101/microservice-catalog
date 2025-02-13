@@ -31,12 +31,12 @@ class UpdateCastMermberUseCaseUnitTest extends TestCase
 
         $mockRepository = Mockery::mock(stdClass::class, CastMemberRepositoryInterface::class);
         $mockRepository->shouldReceive('findById')
-                            ->times(1)
-                            ->with($uuid)
-                            ->andReturn($mockEntity);
+            ->times(1)
+            ->with($uuid)
+            ->andReturn($mockEntity);
         $mockRepository->shouldReceive('update')
-                            ->once()
-                            ->andReturn($mockEntity);
+            ->once()
+            ->andReturn($mockEntity);
 
         $mockInputDto = Mockery::mock(CastMemberUpdateInputDto::class, [
             $uuid, 'new name',

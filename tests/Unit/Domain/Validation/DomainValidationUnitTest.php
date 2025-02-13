@@ -9,7 +9,7 @@ use Throwable;
 
 class DomainValidationUnitTest extends TestCase
 {
-    public function testNotNull()
+    public function test_not_null()
     {
         try {
             $value = '';
@@ -21,7 +21,7 @@ class DomainValidationUnitTest extends TestCase
         }
     }
 
-    public function testNotNullCustomMessageException()
+    public function test_not_null_custom_message_exception()
     {
         try {
             $value = '';
@@ -33,7 +33,7 @@ class DomainValidationUnitTest extends TestCase
         }
     }
 
-    public function testStrMaxLength()
+    public function test_str_max_length()
     {
         try {
             $value = 'Teste';
@@ -45,7 +45,7 @@ class DomainValidationUnitTest extends TestCase
         }
     }
 
-    public function testStrMinLength()
+    public function test_str_min_length()
     {
         try {
             $value = 'Test';
@@ -57,7 +57,7 @@ class DomainValidationUnitTest extends TestCase
         }
     }
 
-    public function testStrCanNullAndMaxLength()
+    public function test_str_can_null_and_max_length()
     {
         try {
             $value = 'teste';

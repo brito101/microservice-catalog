@@ -23,8 +23,8 @@ class CreateCastMemberUseCaseUnitTest extends TestCase
 
         $mockRepository = Mockery::mock(stdClass::class, CastMemberRepositoryInterface::class);
         $mockRepository->shouldReceive('insert')
-                            ->once()
-                            ->andReturn($mockEntity);
+            ->once()
+            ->andReturn($mockEntity);
         $useCase = new CreateCastMemberUseCase($mockRepository);
 
         $mockDto = Mockery::mock(CastMemberCreateInputDto::class, [

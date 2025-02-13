@@ -14,7 +14,7 @@ use stdClass;
 
 class UpdateCategoryUseCaseUnitTest extends TestCase
 {
-    public function testRenameCategory()
+    public function test_rename_category()
     {
         $uuid = (string) Uuid::uuid4()->toString();
         $categoryName = 'Name';

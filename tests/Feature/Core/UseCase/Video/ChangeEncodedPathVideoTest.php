@@ -10,7 +10,7 @@ use Tests\TestCase;
 
 class ChangeEncodedPathVideoTest extends TestCase
 {
-    public function testIfUpdatedMediaInDatabase()
+    public function test_if_updated_media_in_database()
     {
         $video = Model::factory()->create();
 

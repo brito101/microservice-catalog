@@ -39,6 +39,7 @@ class VideoApiTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider dataProviderPagination
      */
     public function pagination(
@@ -139,7 +140,7 @@ class VideoApiTest extends TestCase
     /**
      * @test
      */
-    public function showNotFound()
+    public function show_not_found()
     {
         $response = $this->getJson("$this->endpoint/fake_id");
         $response->assertNotFound();
@@ -253,7 +254,7 @@ class VideoApiTest extends TestCase
      * @test
      */
     // #[Test]
-    public function storeValidation()
+    public function store_validation()
     {
         $response = $this->postJson($this->endpoint, []);
 
@@ -289,7 +290,7 @@ class VideoApiTest extends TestCase
     /**
      * @test
      */
-    public function destroyNotFound()
+    public function destroy_not_found()
     {
         $response = $this->deleteJson("$this->endpoint/fake_id");
         $response->assertNotFound();

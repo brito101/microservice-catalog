@@ -11,7 +11,7 @@ class ImageVideoUnitTest extends ModelTestCase
 {
     protected function model(): Model
     {
-        return new ImageVideo();
+        return new ImageVideo;
     }
 
     protected function traits(): array

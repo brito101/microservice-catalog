@@ -9,6 +9,5 @@ class GenreCreateOutputDto
         public string $name,
         public bool $is_active,
         public string $created_at = '',
-    ) {
-    }
+    ) {}
 }

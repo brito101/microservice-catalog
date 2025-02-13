@@ -7,17 +7,17 @@ use PHPUnit\Framework\TestCase;
 
 class NotificationUnitTest extends TestCase
 {
-    public function testGetErrors()
+    public function test_get_errors()
     {
-        $notification = new Notification();
+        $notification = new Notification;
         $errors = $notification->getErrors();
 
         $this->assertIsArray($errors);
     }
 
-    public function testAddErrors()
+    public function test_add_errors()
     {
-        $notification = new Notification();
+        $notification = new Notification;
         $notification->addError([
             'context' => 'video',
             'message' => 'video title is required',
@@ -28,9 +28,9 @@ class NotificationUnitTest extends TestCase
         $this->assertCount(1, $errors);
     }
 
-    public function testHasErrors()
+    public function test_has_errors()
     {
-        $notification = new Notification();
+        $notification = new Notification;
         $hasErrors = $notification->hasErrors();
         $this->assertFalse($hasErrors);
 
@@ -41,9 +41,9 @@ class NotificationUnitTest extends TestCase
         $this->assertTrue($notification->hasErrors());
     }
 
-    public function testMessage()
+    public function test_message()
     {
-        $notification = new Notification();
+        $notification = new Notification;
         $notification->addError([
             'context' => 'video',
             'message' => 'title is required',
@@ -61,9 +61,9 @@ class NotificationUnitTest extends TestCase
         );
     }
 
-    public function testMessageFilterContext()
+    public function test_message_filter_context()
     {
-        $notification = new Notification();
+        $notification = new Notification;
         $notification->addError([
             'context' => 'video',
             'message' => 'title is required',

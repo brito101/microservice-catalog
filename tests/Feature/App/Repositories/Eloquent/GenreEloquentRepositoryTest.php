@@ -21,15 +21,15 @@ class GenreEloquentRepositoryTest extends TestCase
     {
         parent::setUp();
 
-        $this->repository = new GenreEloquentRepository(new Model());
+        $this->repository = new GenreEloquentRepository(new Model);
     }
 
-    public function testImplementsInterface()
+    public function test_implements_interface()
     {
         $this->assertInstanceOf(GenreRepositoryInterface::class, $this->repository);
     }
 
-    public function testInsert()
+    public function test_insert()
     {
         $entity = new EntityGenre(name: 'New genre');
 
@@ -42,7 +42,7 @@ class GenreEloquentRepositoryTest extends TestCase
         ]);
     }
 
-    public function testInsertDeactivate()
+    public function test_insert_deactivate()
     {
         $entity = new EntityGenre(name: 'New genre');
         $entity->deactivate();
@@ -55,7 +55,7 @@ class GenreEloquentRepositoryTest extends TestCase
         ]);
     }
 
-    public function testInsertWithRelationships()
+    public function test_insert_with_relationships()
     {
         $categories = Category::factory()->count(4)->create();
 
@@ -73,7 +73,7 @@ class GenreEloquentRepositoryTest extends TestCase
         $this->assertDatabaseCount('category_genre', 4);
     }
 
-    public function testNotFoundById()
+    public function test_not_found_by_id()
     {
         $this->expectException(NotFoundException::class);
 
@@ -82,7 +82,7 @@ class GenreEloquentRepositoryTest extends TestCase
         $this->repository->findById($genre);
     }
 
-    public function testFindById()
+    public function test_find_by_id()
     {
         $genre = Model::factory()->create();
 
@@ -92,7 +92,7 @@ class GenreEloquentRepositoryTest extends TestCase
         $this->assertEquals($genre->name, $response->name);
     }
 
-    public function testFindAll()
+    public function test_find_all()
     {
         $genres = Model::factory()->count(10)->create();
 
@@ -101,14 +101,14 @@ class GenreEloquentRepositoryTest extends TestCase
         $this->assertEquals(count($genres), count($genresDb));
     }
 
-    public function testFindAllEmpty()
+    public function test_find_all_empty()
     {
         $genresDb = $this->repository->findAll();
 
         $this->assertCount(0, $genresDb);
     }
 
-    public function testFindAllWithFilter()
+    public function test_find_all_with_filter()
     {
         Model::factory()->count(10)->create([
             'name' => 'Teste',
@@ -124,7 +124,7 @@ class GenreEloquentRepositoryTest extends TestCase
         $this->assertEquals(20, count($genresDb));
     }
 
-    public function testPagination()
+    public function test_pagination()
     {
         Model::factory()->count(60)->create();
 
@@ -134,7 +134,7 @@ class GenreEloquentRepositoryTest extends TestCase
         $this->assertEquals(60, $response->total());
     }
 
-    public function testPaginationEmpty()
+    public function test_pagination_empty()
     {
         $response = $this->repository->paginate();
 
@@ -142,7 +142,7 @@ class GenreEloquentRepositoryTest extends TestCase
         $this->assertEquals(0, $response->total());
     }
 
-    public function testUpdate()
+    public function test_update()
     {
         $genre = Model::factory()->create();
 
@@ -166,7 +166,7 @@ class GenreEloquentRepositoryTest extends TestCase
         ]);
     }
 
-    public function testUpdateNotFound()
+    public function test_update_not_found()
     {
         $this->expectException(NotFoundException::class);
 
@@ -186,14 +186,14 @@ class GenreEloquentRepositoryTest extends TestCase
         $this->repository->update($entity);
     }
 
-    public function testDeleteNotFound()
+    public function test_delete_not_found()
     {
         $this->expectException(NotFoundException::class);
 
         $this->repository->delete('fake_id');
     }
 
-    public function testDelete()
+    public function test_delete()
     {
         $genre = Model::factory()->create();
 

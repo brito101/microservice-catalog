@@ -10,10 +10,10 @@ use Tests\TestCase;
 
 class DeleteGenreUseCaseTest extends TestCase
 {
-    public function testDelete()
+    public function test_delete()
     {
         $useCase = new DeleteGenreUseCase(
-            new GenreEloquentRepository(new Model())
+            new GenreEloquentRepository(new Model)
         );
 
         $genre = Model::factory()->create();

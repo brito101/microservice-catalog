@@ -10,8 +10,7 @@ class ListVideosUseCase
 {
     public function __construct(
         private VideoRepositoryInterface $repository
-    ) {
-    }
+    ) {}
 
     public function exec(PaginateInputVideoDTO $input): PaginationInterface
     {

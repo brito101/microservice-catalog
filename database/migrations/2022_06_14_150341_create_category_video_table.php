@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('category_video', function (Blueprint $table) {
             $table->uuid('category_id')->index();
             $table->foreign('category_id')
-                    ->references('id')
-                    ->on('categories');
+                ->references('id')
+                ->on('categories');
             $table->uuid('video_id')->index();
             $table->foreign('video_id')
-                    ->references('id')
-                    ->on('videos');
+                ->references('id')
+                ->on('videos');
 
             $table->unique(['category_id', 'video_id']);
         });

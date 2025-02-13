@@ -15,7 +15,7 @@ use stdClass;
 
 class ChangeEncodedPathVideoUnitTest extends TestCase
 {
-    public function testSpies()
+    public function test_spies()
     {
         $input = new ChangeEncodedVideoDTO(
             id: 'id-video',
@@ -24,11 +24,11 @@ class ChangeEncodedPathVideoUnitTest extends TestCase
 
         $mockRepository = Mockery::mock(stdClass::class, VideoRepositoryInterface::class);
         $mockRepository->shouldReceive('findById')
-                        ->times(1)
-                        ->with($input->id)
-                        ->andReturn($this->getEntity());
+            ->times(1)
+            ->with($input->id)
+            ->andReturn($this->getEntity());
         $mockRepository->shouldReceive('updateMedia')
-                        ->times(1);
+            ->times(1);
 
         $useCase = new ChangeEncodedPathVideo(
             repository: $mockRepository
@@ -41,7 +41,7 @@ class ChangeEncodedPathVideoUnitTest extends TestCase
         Mockery::close();
     }
 
-    public function testExceptionRepository()
+    public function test_exception_repository()
     {
         $this->expectException(NotFoundException::class);
 
@@ -52,11 +52,11 @@ class ChangeEncodedPathVideoUnitTest extends TestCase
 
         $mockRepository = Mockery::mock(stdClass::class, VideoRepositoryInterface::class);
         $mockRepository->shouldReceive('findById')
-                        ->times(1)
-                        ->with($input->id)
-                        ->andThrow(new NotFoundException('Not Found Video'));
+            ->times(1)
+            ->with($input->id)
+            ->andThrow(new NotFoundException('Not Found Video'));
         $mockRepository->shouldReceive('updateMedia')
-                        ->times(0);
+            ->times(0);
 
         $useCase = new ChangeEncodedPathVideo(
             repository: $mockRepository

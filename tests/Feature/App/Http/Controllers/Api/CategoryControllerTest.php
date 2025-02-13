@@ -28,9 +28,9 @@ class CategoryControllerTest extends TestCase
     protected function setUp(): void
     {
         $this->repository = new CategoryEloquentRepository(
-            new Category()
+            new Category
         );
-        $this->controller = new CategoryController();
+        $this->controller = new CategoryController;
 
         parent::setUp();
     }
@@ -39,7 +39,7 @@ class CategoryControllerTest extends TestCase
     {
         $useCase = new ListCategoriesUseCase($this->repository);
 
-        $response = $this->controller->index(new Request(), $useCase);
+        $response = $this->controller->index(new Request, $useCase);
 
         $this->assertInstanceOf(AnonymousResourceCollection::class, $response);
         $this->assertArrayHasKey('meta', $response->additional);
@@ -49,7 +49,7 @@ class CategoryControllerTest extends TestCase
     {
         $useCase = new CreateCategoryUseCase($this->repository);
 
-        $request = new StoreCategoryRequest();
+        $request = new StoreCategoryRequest;
         $request->headers->set('content-type', 'application/json');
         $request->setJson(new ParameterBag([
             'name' => 'Teste',
@@ -78,7 +78,7 @@ class CategoryControllerTest extends TestCase
     {
         $category = Category::factory()->create();
 
-        $request = new UpdateCategoryRequest();
+        $request = new UpdateCategoryRequest;
         $request->headers->set('content-type', 'application/json');
         $request->setJson(new ParameterBag([
             'name' => 'Updated',

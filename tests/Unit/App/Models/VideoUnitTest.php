@@ -11,7 +11,7 @@ class VideoUnitTest extends ModelTestCase
 {
     protected function model(): Model
     {
-        return new Video();
+        return new Video;
     }
 
     protected function traits(): array

@@ -41,8 +41,8 @@ class ListVideoUseCaseUnitTest extends TestCase
     {
         $mockRepository = Mockery::mock(stdClass::class, VideoRepositoryInterface::class);
         $mockRepository->shouldReceive('findById')
-                        ->once()
-                        ->andReturn($this->getEntity());
+            ->once()
+            ->andReturn($this->getEntity());
 
         return $mockRepository;
     }

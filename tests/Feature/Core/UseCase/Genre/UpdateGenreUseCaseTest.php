@@ -14,14 +14,14 @@ use Tests\TestCase;
 
 class UpdateGenreUseCaseTest extends TestCase
 {
-    public function testUpdate()
+    public function test_update()
     {
-        $repository = new GenreEloquentRepository(new Model());
-        $repositoryCategory = new CategoryEloquentRepository(new ModelCategory());
+        $repository = new GenreEloquentRepository(new Model);
+        $repositoryCategory = new CategoryEloquentRepository(new ModelCategory);
 
         $useCase = new UpdateGenreUseCase(
             $repository,
-            new DBTransaction(),
+            new DBTransaction,
             $repositoryCategory
         );
 
@@ -45,16 +45,16 @@ class UpdateGenreUseCaseTest extends TestCase
         $this->assertDatabaseCount('category_genre', 10);
     }
 
-    public function testExceptionUpdateGenreWitiCategoriesIdsInvalid()
+    public function test_exception_update_genre_witi_categories_ids_invalid()
     {
         $this->expectException(NotFoundException::class);
 
-        $repository = new GenreEloquentRepository(new Model());
-        $repositoryCategory = new CategoryEloquentRepository(new ModelCategory());
+        $repository = new GenreEloquentRepository(new Model);
+        $repositoryCategory = new CategoryEloquentRepository(new ModelCategory);
 
         $useCase = new UpdateGenreUseCase(
             $repository,
-            new DBTransaction(),
+            new DBTransaction,
             $repositoryCategory
         );
 
@@ -73,14 +73,14 @@ class UpdateGenreUseCaseTest extends TestCase
         );
     }
 
-    public function testTransactionUpdate()
+    public function test_transaction_update()
     {
-        $repository = new GenreEloquentRepository(new Model());
-        $repositoryCategory = new CategoryEloquentRepository(new ModelCategory());
+        $repository = new GenreEloquentRepository(new Model);
+        $repositoryCategory = new CategoryEloquentRepository(new ModelCategory);
 
         $useCase = new UpdateGenreUseCase(
             $repository,
-            new DBTransaction(),
+            new DBTransaction,
             $repositoryCategory
         );
 

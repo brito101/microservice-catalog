@@ -12,7 +12,7 @@ use Ramsey\Uuid\Uuid as RamseyUuid;
 
 class CastMemberUnitTest extends TestCase
 {
-    public function testAttributes()
+    public function test_attributes()
     {
         $uuid = (string) RamseyUuid::uuid4();
 
@@ -29,7 +29,7 @@ class CastMemberUnitTest extends TestCase
         $this->assertNotEmpty($castMember->createdAt());
     }
 
-    public function testAttributesNewEntity()
+    public function test_attributes_new_entity()
     {
         $castMember = new CastMember(
             name: 'Name',
@@ -42,7 +42,7 @@ class CastMemberUnitTest extends TestCase
         $this->assertNotEmpty($castMember->createdAt());
     }
 
-    public function testValidation()
+    public function test_validation()
     {
         $this->expectException(EntityValidationException::class);
 
@@ -52,7 +52,7 @@ class CastMemberUnitTest extends TestCase
         );
     }
 
-    public function testExceptionUpdate()
+    public function test_exception_update()
     {
         $this->expectException(EntityValidationException::class);
 
@@ -68,7 +68,7 @@ class CastMemberUnitTest extends TestCase
         $this->assertEquals('new name', $castMember->name);
     }
 
-    public function testUpdate()
+    public function test_update()
     {
         $castMember = new CastMember(
             name: 'name',

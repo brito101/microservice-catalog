@@ -56,12 +56,12 @@ class UpdateGenreUseCaseUnitTest extends TestCase
 
         $mockRepository = Mockery::mock(stdClass::class, GenreRepositoryInterface::class);
         $mockRepository->shouldReceive('findById')
-                        ->once()
-                        ->with($uuid)
-                        ->andReturn($mockEntity);
+            ->once()
+            ->with($uuid)
+            ->andReturn($mockEntity);
         $mockRepository->shouldReceive('update')
-                        ->times($timesCalled)
-                        ->andReturn($mockEntity);
+            ->times($timesCalled)
+            ->andReturn($mockEntity);
 
         return $mockRepository;
     }
@@ -79,8 +79,8 @@ class UpdateGenreUseCaseUnitTest extends TestCase
     {
         $mockCategoryRepository = Mockery::mock(stdClass::class, CategoryRepositoryInterface::class);
         $mockCategoryRepository->shouldReceive('getIdsListIds')
-                                ->once()
-                                ->andReturn([$uuid]);
+            ->once()
+            ->andReturn([$uuid]);
 
         return $mockCategoryRepository;
     }

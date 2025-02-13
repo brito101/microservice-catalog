@@ -12,7 +12,7 @@ class CreateCategoryUseCaseTest extends TestCase
 {
     public function test_create()
     {
-        $repository = new CategoryEloquentRepository(new Model());
+        $repository = new CategoryEloquentRepository(new Model);
         $useCase = new CreateCategoryUseCase($repository);
         $responseUseCase = $useCase->execute(
             new CategoryCreateInputDto(

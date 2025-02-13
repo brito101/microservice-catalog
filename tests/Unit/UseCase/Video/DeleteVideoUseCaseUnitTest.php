@@ -32,8 +32,8 @@ class DeleteVideoUseCaseUnitTest extends TestCase
     {
         $mockRepository = Mockery::mock(stdClass::class, VideoRepositoryInterface::class);
         $mockRepository->shouldReceive('delete')
-                        ->once()
-                        ->andReturn(true);
+            ->once()
+            ->andReturn(true);
 
         return $mockRepository;
     }

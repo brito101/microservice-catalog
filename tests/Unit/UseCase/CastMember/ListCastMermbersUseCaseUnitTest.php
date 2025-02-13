@@ -18,8 +18,8 @@ class ListCastMermbersUseCaseUnitTest extends TestCase
     {
         $mockRepository = Mockery::mock(stdClass::class, CastMemberRepositoryInterface::class);
         $mockRepository->shouldReceive('paginate')
-                            ->once()
-                            ->andReturn($this->mockPagination());
+            ->once()
+            ->andReturn($this->mockPagination());
 
         $useCase = new ListCastMembersUseCase($mockRepository);
 

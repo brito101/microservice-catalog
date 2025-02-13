@@ -142,9 +142,9 @@ abstract class BaseVideoUseCase extends TestCase
             $this->app->make(VideoRepositoryInterface::class),
             $this->app->make(TransactionInterface::class),
             // this->app->make(FileStorageInterface::class),
-            new UploadFilesStub(),
+            new UploadFilesStub,
             // $this->app->make(VideoEventManagerInterface::class),
-            new VideoEventStub(),
+            new VideoEventStub,
 
             $this->app->make(CategoryRepositoryInterface::class),
             $this->app->make(GenreRepositoryInterface::class),
@@ -155,7 +155,7 @@ abstract class BaseVideoUseCase extends TestCase
     /**
      * @test
      */
-    public function transanctionException()
+    public function transanction_exception()
     {
         // $this->expectException(Exception::class);
 
@@ -170,14 +170,14 @@ abstract class BaseVideoUseCase extends TestCase
             $this->assertTrue(false);
         } catch (Throwable $th) {
             $this->assertDatabaseCount('videos', 0);
-            //throw $th;
+            // throw $th;
         }
     }
 
     /**
      * @test
      */
-    public function uploadFilesException()
+    public function upload_files_exception()
     {
         Event::listen(UploadFilesStub::class, function () {
             throw new Exception('upload files');
@@ -198,14 +198,14 @@ abstract class BaseVideoUseCase extends TestCase
             $this->assertTrue(false);
         } catch (Throwable $th) {
             $this->assertDatabaseCount('videos', 0);
-            //throw $th;
+            // throw $th;
         }
     }
 
     /**
      * @test
      */
-    public function eventException()
+    public function event_exception()
     {
         Event::listen(VideoEventStub::class, function () {
             throw new Exception('event');
@@ -225,7 +225,7 @@ abstract class BaseVideoUseCase extends TestCase
             $this->assertTrue(false);
         } catch (\Throwable $th) {
             $this->assertDatabaseCount('videos', 0);
-            //throw $th;
+            // throw $th;
         }
     }
 }

@@ -3,9 +3,7 @@
 namespace Core\UseCase\Video;
 
 use Core\Domain\Builder\Video\Builder;
-use Core\Domain\Enum\{
-    MediaStatus
-};
+use Core\Domain\Enum\MediaStatus;
 use Core\Domain\Events\VideoCreatedEvent;
 use Core\Domain\Exception\NotFoundException;
 use Core\Domain\Repository\CastMemberRepositoryInterface;
@@ -62,7 +60,7 @@ abstract class BaseVideoUseCase
         }
     }
 
-    protected function storageFile(string $path, ?array $media = null): null|string
+    protected function storageFile(string $path, ?array $media = null): ?string
     {
         if ($media) {
             return $this->storage->store(

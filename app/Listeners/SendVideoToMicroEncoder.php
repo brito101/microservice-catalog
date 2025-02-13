@@ -13,8 +13,7 @@ class SendVideoToMicroEncoder
      */
     public function __construct(
         private AMQPInterface $amqp
-    ) {
-    }
+    ) {}
 
     /**
      * Handle the event.
