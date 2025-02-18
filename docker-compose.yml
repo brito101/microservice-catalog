@@ -1,4 +1,5 @@
 services:
+
     app:
         build: .
         container_name: microservice-videos-app
@@ -14,7 +15,7 @@ services:
     nginx:
         build: .docker/nginx
         container_name: microservice-videos-nginx
-        # restart: always
+        restart: always
         tty: true
         ports:
             - "8000:80"
@@ -28,7 +29,7 @@ services:
     db:
         build: ./.docker/mysql
         container_name: microservice-videos-db
-        # restart: always
+        restart: always
         tty: true
         ports:
             - "33006:3306"
